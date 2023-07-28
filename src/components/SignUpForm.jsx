@@ -12,7 +12,13 @@ export default function SignUpForm() {
 
     try {
         console.log(`test try`);
-        const dog = await fetch("https://fsa-jwt-practice.herokuapp.com/signup");
+        // const dog = await fetch("https://fsa-jwt-practice.herokuapp.com/signup");
+        const dog = await fetch("https://fsa-jwt-practice.herokuapp.com/signup", {
+          method: "POST",
+          // console.log(`test post`),
+          // body: JSON.stringify(x),
+          // headers: {"Content-Type" : "application/json"}
+        });
         const owner = await dog.json();
         console.log(`test owner below`);
         console.log(owner);
