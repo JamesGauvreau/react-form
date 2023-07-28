@@ -21,6 +21,9 @@ export default function SignUpForm() {
     }
   }
 
+  // cardianl useState rulE: never change the variable directle
+  // [...] is a spread operator which can make a new array, e.g. const newPokemonList = [...pokemonList, newPokemon];
+
   return (
     <>
       <h2>Sign Up</h2>
