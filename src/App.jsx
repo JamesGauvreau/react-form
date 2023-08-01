@@ -6,6 +6,7 @@ export default function App() {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [token,setToken] = useState(null);
   // const [error, setError] = useState(null)
   
   const usernameInputChange = (event) => {

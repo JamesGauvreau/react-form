@@ -2,7 +2,9 @@ import { useState } from "react";
 
 // API_URL = `https://fsa-jwt-practice.herokuapp.com/signup`
 
-export default function SignUpForm() {
+// const SignUpForm = () => 
+
+export default function SignUpForm(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -15,12 +17,19 @@ export default function SignUpForm() {
         // const dog = await fetch("https://fsa-jwt-practice.herokuapp.com/signup");
         const dog = await fetch("https://fsa-jwt-practice.herokuapp.com/signup", {
           method: "POST",
+          body: JSON.stringify({
+            username,
+            password}),
+            headers : {
+              "Content-Type": "application/json",
           // body: JSON.stringify(x),
           // headers: {"Content-Type" : "application/json"}
+            },
         });
         const owner = await dog.json();
         console.log(`test owner below`);
         console.log(owner);
+        props.setToken(owner.token);
     } catch (error) {
       setError(error.message);
     }
@@ -32,13 +41,15 @@ export default function SignUpForm() {
   return (
     <>
       <h2>Sign Up</h2>
+      {/* <p>Typed Username: {username}</p> */}
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>
           Username:{" "}
           <input
+            type="text"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)} // e = event
           />
         </label>
         <label>
